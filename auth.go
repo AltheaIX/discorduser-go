@@ -20,7 +20,7 @@ func Auth(token string) (s *Session, err error) {
 func (s *Session) RequestWithAuth(url string) (result []byte, err error) {
 	client := &http.Client{}
 
-	req, _ := http.NewRequest("GET", "https://discord.com/api/users/@me", nil)
+	req, _ := http.NewRequest("GET", "https://discord.com/api"+url, nil)
 	req.Header.Add("authorization", s.Authorization)
 	resp, err := client.Do(req)
 	if err != nil {
